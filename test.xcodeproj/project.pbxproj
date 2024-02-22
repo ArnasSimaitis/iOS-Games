@@ -11,9 +11,8 @@
 		E28990FE2B8605ED00F2D7BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28990FD2B8605ED00F2D7BD /* ContentView.swift */; };
 		E28991002B8605EF00F2D7BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E28990FF2B8605EF00F2D7BD /* Assets.xcassets */; };
 		E28991032B8605EF00F2D7BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E28991022B8605EF00F2D7BD /* Preview Assets.xcassets */; };
-		E289910D2B8605EF00F2D7BD /* testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289910C2B8605EF00F2D7BD /* testTests.swift */; };
-		E28991172B8605EF00F2D7BD /* testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28991162B8605EF00F2D7BD /* testUITests.swift */; };
-		E28991192B8605EF00F2D7BD /* testUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28991182B8605EF00F2D7BD /* testUITestsLaunchTests.swift */; };
+		E28991262B86810900F2D7BD /* guessTheNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28991252B86810900F2D7BD /* guessTheNumber.swift */; };
+		E28991282B86814600F2D7BD /* minesweeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28991272B86814600F2D7BD /* minesweeper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +39,9 @@
 		E28990FF2B8605EF00F2D7BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E28991022B8605EF00F2D7BD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E28991082B8605EF00F2D7BD /* testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E289910C2B8605EF00F2D7BD /* testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTests.swift; sourceTree = "<group>"; };
 		E28991122B8605EF00F2D7BD /* testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E28991162B8605EF00F2D7BD /* testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testUITests.swift; sourceTree = "<group>"; };
-		E28991182B8605EF00F2D7BD /* testUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E28991252B86810900F2D7BD /* guessTheNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guessTheNumber.swift; sourceTree = "<group>"; };
+		E28991272B86814600F2D7BD /* minesweeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = minesweeper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				E28990FA2B8605ED00F2D7BD /* test */,
-				E289910B2B8605EF00F2D7BD /* testTests */,
-				E28991152B8605EF00F2D7BD /* testUITests */,
 				E28990F92B8605ED00F2D7BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,10 +90,12 @@
 		E28990FA2B8605ED00F2D7BD /* test */ = {
 			isa = PBXGroup;
 			children = (
+				E28991272B86814600F2D7BD /* minesweeper.swift */,
 				E28990FB2B8605ED00F2D7BD /* testApp.swift */,
 				E28990FD2B8605ED00F2D7BD /* ContentView.swift */,
 				E28990FF2B8605EF00F2D7BD /* Assets.xcassets */,
 				E28991012B8605EF00F2D7BD /* Preview Content */,
+				E28991252B86810900F2D7BD /* guessTheNumber.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -108,23 +106,6 @@
 				E28991022B8605EF00F2D7BD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		E289910B2B8605EF00F2D7BD /* testTests */ = {
-			isa = PBXGroup;
-			children = (
-				E289910C2B8605EF00F2D7BD /* testTests.swift */,
-			);
-			path = testTests;
-			sourceTree = "<group>";
-		};
-		E28991152B8605EF00F2D7BD /* testUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E28991162B8605EF00F2D7BD /* testUITests.swift */,
-				E28991182B8605EF00F2D7BD /* testUITestsLaunchTests.swift */,
-			);
-			path = testUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +238,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E28991282B86814600F2D7BD /* minesweeper.swift in Sources */,
+				E28991262B86810900F2D7BD /* guessTheNumber.swift in Sources */,
 				E28990FE2B8605ED00F2D7BD /* ContentView.swift in Sources */,
 				E28990FC2B8605ED00F2D7BD /* testApp.swift in Sources */,
 			);
@@ -266,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E289910D2B8605EF00F2D7BD /* testTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +256,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E28991192B8605EF00F2D7BD /* testUITestsLaunchTests.swift in Sources */,
-				E28991172B8605EF00F2D7BD /* testUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +402,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"test/Preview Content\"";
+				DEVELOPMENT_TEAM = TMF8WU79P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -434,7 +415,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tes.test.test;
+				PRODUCT_BUNDLE_IDENTIFIER = lt.asimaitis.minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -450,6 +431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"test/Preview Content\"";
+				DEVELOPMENT_TEAM = TMF8WU79P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -462,7 +444,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tes.test.test;
+				PRODUCT_BUNDLE_IDENTIFIER = lt.asimaitis.minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

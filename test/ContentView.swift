@@ -7,18 +7,41 @@
 
 import SwiftUI
 
+struct gameNumbers {
+    var correct: Int
+    var incorrect: Int
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView{
+            List{
+                NavigationLink(destination: View1()){
+                    Text("Guess the number")
+                }
+                NavigationLink(destination: View2()){
+                    Text("Minesweeper")
+                }
+            }
         }
-        .padding()
+        
     }
 }
 
-#Preview {
-    ContentView()
+struct View1: View {
+    var body: some View {
+        guessTheNumberGame()
+    }
+}
+
+struct View2: View {
+    var body: some View {
+        minesweeper()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
