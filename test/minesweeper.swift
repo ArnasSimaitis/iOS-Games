@@ -24,9 +24,12 @@ struct touchingBlocks {
 
 class msBlock: Identifiable, ObservableObject{
     var id = UUID()
-    @Published var bomb = -1
+    var bomb = -1
     @Published var text = ""
     @Published var background = Color.blue
+    @Published var marked = false
+    private var display = false
+    
     var neighbors: touchingBlocks? = nil
     
     var btn: msBlockButton {
@@ -34,15 +37,29 @@ class msBlock: Identifiable, ObservableObject{
     }
     
     func onClick(){
+        if self.marked {
+            self.mark()
+            return
+        }
+        self.display = true
         if self.bomb == 0 {
-            self.text = "🚩"
-            self.background = Color.red
+            self.text = "💣"
+            self.background = Color.brown
         } else if self.bomb > 0 {
             self.text = String(self.bomb)
             self.background = Color.green
         } else if self.bomb == -1 {
             self.background = Color.gray
         }
+    }
+    
+    func mark() {
+        if self.display {
+            return
+        }
+        self.marked = !self.marked
+        self.text = self.text == "🚩" ? "" : "🚩"
+        self.background = self.background == Color.red ? Color.blue : Color.red
     }
     
     func addBomb() {
@@ -71,13 +88,19 @@ struct msBlockButton: View {
     
     @ObservedObject var block: msBlock
     
+    @State var longPress = false
+    
     init(block: msBlock) {
         self.block = block
     }
     
     var body: some View {
         Button(action: {
-            self.block.onClick()
+            if self.longPress{
+                self.longPress = false
+            } else {
+                self.block.onClick()
+            }
         }){
             Text(self.block.text)
                 .frame(width:50,height:50)
@@ -85,6 +108,10 @@ struct msBlockButton: View {
                 .foregroundColor(Color.white)
                 .cornerRadius(10)
         }
+        .simultaneousGesture(LongPressGesture(minimumDuration: 0.3).onEnded({ _ in
+            self.longPress = true
+            self.block.mark()
+        }))
     }
 }
 
