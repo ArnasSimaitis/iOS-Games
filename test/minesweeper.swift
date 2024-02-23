@@ -30,6 +30,8 @@ class msBlock: Identifiable, ObservableObject{
     @Published var marked = false
     private var display = false
     
+    var markedBombs = 0
+    
     var neighbors: touchingBlocks? = nil
     
     var btn: msBlockButton {
@@ -41,6 +43,23 @@ class msBlock: Identifiable, ObservableObject{
             self.mark()
             return
         }
+        
+        // When player clicks second time on block with enough flags
+        if self.display && self.markedBombs == self.bomb && self.bomb > 0 {
+            self.neighbors?.allBlocks().compactMap { $0 }.forEach { block in
+                if block.display {
+                    return
+                }
+                if !block.marked {
+                    block.onClick()
+                } else if block.marked && block.bomb != 0 {
+                    block.text = "❌"
+                    block.display = true
+                }
+            }
+        }
+
+        
         self.display = true
         if self.bomb == 0 {
             self.text = "💣"
@@ -50,6 +69,11 @@ class msBlock: Identifiable, ObservableObject{
             self.background = Color.green
         } else if self.bomb == -1 {
             self.background = Color.gray
+            self.neighbors?.allBlocks().compactMap { $0 }.forEach { block in
+                if !block.display {
+                    block.onClick()
+                }
+            }
         }
     }
     
@@ -57,9 +81,15 @@ class msBlock: Identifiable, ObservableObject{
         if self.display {
             return
         }
+        
         self.marked = !self.marked
-        self.text = self.text == "🚩" ? "" : "🚩"
-        self.background = self.background == Color.red ? Color.blue : Color.red
+        self.text = self.marked ? "🚩" : ""
+        self.background = self.marked ? Color.red : Color.blue
+        
+        self.neighbors?.allBlocks().compactMap { $0 }.forEach { block in
+            block.markedBombs = self.marked ? block.markedBombs + 1 : block.markedBombs - 1
+        }
+
     }
     
     func addBomb() {
@@ -74,12 +104,8 @@ class msBlock: Identifiable, ObservableObject{
     
     func makeBomb(){
         self.bomb = 0
-        if self.neighbors != nil{
-            if let allBlocks = self.neighbors?.allBlocks() {
-                for block in allBlocks{
-                    block?.addBomb()
-                }
-            }
+        self.neighbors?.allBlocks().compactMap { $0 }.forEach { block in
+            block.addBomb()
         }
     }
 }
@@ -150,7 +176,7 @@ class msTable: ObservableObject{
 }
 
 struct minesweeper: View {
-    @StateObject private var layout = msTable(width: 7, height: 7, bombs: 10)
+    @StateObject private var layout = msTable(width: 7, height: 7, bombs: 8)
     var body: some View {
         let rows: [GridItem] = Array(repeating: .init(.fixed(50), spacing: 0), count: 7)
         VStack(alignment:.center){
